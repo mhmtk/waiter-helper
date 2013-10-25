@@ -42,7 +42,7 @@ implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 		return true;
 	}
 
-	
+
 	/*
 	 * This method is called when the Enter Patrons button is clicked. It opens
 	 * the activity EnterPatronsActivity
@@ -50,8 +50,8 @@ implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 	public void enterPatrons(View view)
 	{
 		//Create an intent and start the activity
-		Intent intent = new Intent(this, EnterPatronsActivity.class);
-		startActivity(intent);
+		Intent enterIntent = new Intent(this, EnterPatronsActivity.class);
+		startActivity(enterIntent);
 	}
 
 	/*
@@ -72,12 +72,13 @@ implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 
 	public void view(View view)
 	{
-
+		Intent viewIntent = new Intent(this, ViewActivity.class);
+		startActivity(viewIntent);
 	}
 
 	public void load(View view)
 	{
-
+		
 	}
 
 	public void exit(View view)
@@ -112,7 +113,7 @@ implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 		}
 		catch(Exception e){}
 	}
-	
+
 	/*
 	 * called when the user hits save on the enter file name dialog fragment,
 	 * calls the store() method to store the data as a file with the input

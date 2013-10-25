@@ -9,13 +9,12 @@
     <string name="load">Load</string>
     <string name="enterPatrons">Enter Patrons</string>
     <string name="title_activity_enter_patrons">Enter Patrons Activity</string>
-    
     <string name="edit_seat_number_hint">Seat No</string>
     <string name="button_done">Done</string>
     <string name="text_meal">Select Meal</string>
     <string name="edit_table_hint">Table ID</string>
     <string name="button_add">Add</string>
-    
+
     <string-array name="array_meal">
         <item>Beef Fajitas</item>
         <item>Cafe de Paris Steak</item>
@@ -23,9 +22,13 @@
         <item>Pasta</item>
         <item>Zesty Rice</item>
     </string-array>
-    
+
     <string name="hint_filenamedialog"> Enter file name</string>
     <string name="enterfilenamedialog_save"> Save </string>
     <string name="enterfilenamedialog_cancel"> Cancel</string>
-
+    
+    <string name="title_activity_view">ViewActivity</string>
+    
+    <string name="pick_database_table"> Pick a database table to load</string>
+    
 </resources>

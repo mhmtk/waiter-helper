@@ -27,30 +27,33 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int EnterPatrons=0x7f090008;
-        public static final int Exit=0x7f09000c;
-        public static final int Load=0x7f09000b;
-        public static final int Store=0x7f090009;
-        public static final int View=0x7f09000a;
-        public static final int action_settings=0x7f09000e;
+        public static final int EnterPatrons=0x7f090009;
+        public static final int Exit=0x7f09000d;
+        public static final int Load=0x7f09000c;
+        public static final int Store=0x7f09000a;
+        public static final int View=0x7f09000b;
+        public static final int action_settings=0x7f09000f;
         public static final int button_add=0x7f090006;
         public static final int button_done=0x7f090007;
         public static final int buttons=0x7f090005;
-        public static final int edit_filenamedialog=0x7f09000d;
+        public static final int edit_filenamedialog=0x7f09000e;
         public static final int edit_seat_number=0x7f090002;
         public static final int edit_table=0x7f090001;
         public static final int spinner_meal=0x7f090004;
         public static final int table_and_seat=0x7f090000;
         public static final int text_meal=0x7f090003;
+        public static final int view_text=0x7f090008;
     }
     public static final class layout {
         public static final int activity_enter_patrons=0x7f030000;
-        public static final int activity_wait_main=0x7f030001;
-        public static final int enter_file_name_dialog_layout=0x7f030002;
+        public static final int activity_view=0x7f030001;
+        public static final int activity_wait_main=0x7f030002;
+        public static final int enter_file_name_dialog_layout=0x7f030003;
     }
     public static final class menu {
         public static final int enter_patrons=0x7f080000;
-        public static final int wait_main=0x7f080001;
+        public static final int view=0x7f080001;
+        public static final int wait_main=0x7f080002;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -65,9 +68,11 @@ public final class R {
         public static final int exit=0x7f050002;
         public static final int hint_filenamedialog=0x7f05000d;
         public static final int load=0x7f050005;
+        public static final int pick_database_table=0x7f050011;
         public static final int store=0x7f050004;
         public static final int text_meal=0x7f05000a;
         public static final int title_activity_enter_patrons=0x7f050007;
+        public static final int title_activity_view=0x7f050010;
         public static final int view=0x7f050003;
     }
     public static final class style {

@@ -24,8 +24,12 @@
         </activity>
         <activity
             android:name="com.example.waiterhelper.EnterPatronsActivity"
-            android:label="@string/title_activity_enter_patrons" 
+            android:label="@string/title_activity_enter_patrons"
             android:parentActivityName="com.example.waiterhelper.WaitMain" >
+        </activity>
+        <activity
+            android:name="com.example.waiterhelper.ViewActivity"
+            android:label="@string/title_activity_view" >
         </activity>
     </application>
 
