@@ -16,12 +16,13 @@
     <string name="button_add">Add</string>
 
     <string-array name="array_meal">
+        <item>Select an order</item>
         <item>Beef Fajitas</item>
         <item>Cafe de Paris Steak</item>
         <item>Chicken Tika Masala</item>
         <item>Pasta</item>
         <item>Zesty Rice</item>
-    </string-array>
+    </string-array>    
 
     <string name="hint_filenamedialog"> Enter file name</string>
     <string name="enterfilenamedialog_save"> Save </string>

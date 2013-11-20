@@ -1,4 +1,4 @@
-package com.example.waiterhelper;
+package com.mhmt.waiterhelper.database;
 
 import android.provider.BaseColumns;
 
@@ -14,6 +14,5 @@ public final class WaiterHelperContract {
 		public static final String COLUMN_NAME_TABLE_ID = "TableID";
 		public static final String COLUMN_NAME_SEAT_NO = "SeatNo";
 		public static final String COLUMN_NAME_MEAL = "MealSelection";
-		public static final String COLUMN_NAME_NULLABLE = null;
 	}
 }

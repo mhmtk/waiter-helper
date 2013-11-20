@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.waiterhelper.WaitMain"
+            android:name="com.mhmt.waiterhelper.activities.WaitMain"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,12 +23,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.waiterhelper.EnterPatronsActivity"
+            android:name="com.mhmt.waiterhelper.activities.EnterPatronsActivity"
             android:label="@string/title_activity_enter_patrons"
-            android:parentActivityName="com.example.waiterhelper.WaitMain" >
+            android:parentActivityName="com.mhmt.waiterhelper.activities.WaitMain" >
         </activity>
         <activity
-            android:name="com.example.waiterhelper.ViewActivity"
+            android:name="com.mhmt.waiterhelper.activities.ViewActivity"
             android:label="@string/title_activity_view" >
         </activity>
     </application>

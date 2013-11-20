@@ -1,10 +1,10 @@
-package com.example.waiterhelper;
+package com.mhmt.waiterhelper.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.waiterhelper.WaiterHelperContract.OrderEntry;
+import com.mhmt.waiterhelper.database.WaiterHelperContract.OrderEntry;
 
 public class WaiterHelperDbHelper extends SQLiteOpenHelper{
 	
