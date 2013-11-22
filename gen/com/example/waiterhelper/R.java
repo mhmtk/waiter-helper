@@ -42,7 +42,7 @@ public final class R {
         public static final int spinner_meal=0x7f090004;
         public static final int table_and_seat=0x7f090000;
         public static final int text_meal=0x7f090003;
-        public static final int view_text=0x7f090008;
+        public static final int view_list=0x7f090008;
     }
     public static final class layout {
         public static final int activity_enter_patrons=0x7f030000;

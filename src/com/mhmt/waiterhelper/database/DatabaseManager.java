@@ -1,15 +1,23 @@
 package com.mhmt.waiterhelper.database;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.mhmt.waiterhelper.database.WaiterHelperContract.OrderEntry;
+import com.mhmt.waiterhelper.dataobjects.Patron;
 
 public class DatabaseManager {
 
 	private WaiterHelperDbHelper mDbHelper;
 	private SQLiteDatabase db;
+	private ArrayList<Patron> patronList;
 
 	public DatabaseManager(Context context){
 
@@ -17,7 +25,78 @@ public class DatabaseManager {
 		this.db = mDbHelper.getReadableDatabase();
 	}
 
-	/*
+	/**
+	 * loads the database saved in the passed file 
+	 * @param filename Name of the file the database is saved
+	 * @param context
+	 */
+	public void loadDatabase(String filename, Context context) {
+		File file = new File(context.getFilesDir(), filename);
+		Scanner scanner;
+		try {
+			scanner = new Scanner(file);
+			WaiterHelperDbHelper myDbHelper = new WaiterHelperDbHelper(context);
+			SQLiteDatabase db = myDbHelper.getWritableDatabase();
+			ContentValues values = new ContentValues();
+
+			while(scanner.hasNext())
+			{
+				String line = scanner.nextLine();
+				String[] cellArray = line.split(",");
+				values.put(OrderEntry.COLUMN_NAME_TABLE_ID, cellArray[0]);
+				values.put(OrderEntry.COLUMN_NAME_SEAT_NO, cellArray[1]);
+				values.put(OrderEntry.COLUMN_NAME_MEAL, cellArray[2]);
+				db.insert(OrderEntry.TABLE_NAME, null, values);
+			}
+			db.close();
+		} catch (FileNotFoundException e) { }
+	}
+
+	/**
+	 * 
+	 * @return an ArrayList<Patron> containing the patron objects of the current database
+	 */
+	public ArrayList<Patron> getPatronsArray() {
+
+		patronList = new ArrayList<Patron>();
+
+		//define a projection that specifies which columns from the database to use
+		String[] projection = {
+				OrderEntry.COLUMN_NAME_TABLE_ID,
+				OrderEntry.COLUMN_NAME_SEAT_NO,
+				OrderEntry.COLUMN_NAME_MEAL
+		};
+
+		//sort descending
+		String sortOrder = OrderEntry.COLUMN_NAME_TABLE_ID + " DESC";
+
+		//create cursor with the whole database
+		Cursor c = db.query(
+				OrderEntry.TABLE_NAME,  // The table to query
+				projection,				// The columns to return
+				null,		            // The columns for the WHERE clause
+				null,                   // The values for the WHERE clause
+				null,                   // don't group the rows
+				null,					// don't filter by row groups
+				sortOrder               // The sort order
+				);
+
+		//move cursor to the beginning
+		c.moveToFirst();
+
+		while(!c.isAfterLast())
+		{
+			Patron p = new Patron(c.getString(c.getColumnIndexOrThrow(OrderEntry.COLUMN_NAME_TABLE_ID)),
+					c.getString(c.getColumnIndexOrThrow(OrderEntry.COLUMN_NAME_SEAT_NO)),
+					c.getString(c.getColumnIndexOrThrow(OrderEntry.COLUMN_NAME_MEAL)));
+			patronList.add(p);
+			c.moveToNext();
+		}
+		db.close();
+		return patronList;
+	}
+
+	/**
 	 * called by the store() method to return the data in the database
 	 * table as a String
 	 */

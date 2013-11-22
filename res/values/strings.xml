@@ -28,7 +28,7 @@
     <string name="enterfilenamedialog_save"> Save </string>
     <string name="enterfilenamedialog_cancel"> Cancel</string>
     
-    <string name="title_activity_view">ViewActivity</string>
+    <string name="title_activity_view">Database View</string>
     
     <string name="pick_database_table"> Pick a database table to load</string>
     
