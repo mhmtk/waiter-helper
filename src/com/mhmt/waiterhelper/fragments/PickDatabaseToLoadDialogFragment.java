@@ -35,6 +35,9 @@ public class PickDatabaseToLoadDialogFragment extends DialogFragment {
 		builder.setTitle(R.string.pick_database_table)
 		.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
             @Override
+            /**
+             * loads the selected database
+             */
             public void onClick(DialogInterface dialog, int id) {
             	Toast.makeText(activity,"Database loaded", Toast.LENGTH_SHORT).show();
             	DatabaseManager dbManager = new DatabaseManager(activity);

@@ -43,7 +43,6 @@ implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 		return true;
 	}
 
-
 	/**
 	 * This method is called when the Enter Patrons button is clicked. It opens
 	 * the activity EnterPatronsActivity
@@ -74,15 +73,12 @@ implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 	{
 		DialogFragment newFragment = new PickDatabaseToLoadDialogFragment();
 		newFragment.show(getSupportFragmentManager(), "pickADatabase");
-
-		//HARDCODED FILENAME GET THIS FROM THE USER
-		String filename = "yolo";
-		dbManager.loadDatabase(filename, this);
 	}
 
 	public void exit(View view)
 	{
-		
+		finish();
+		System.exit(0);
 	}
 
 	/**

@@ -22,7 +22,6 @@ public class DatabaseManager {
 	public DatabaseManager(Context context){
 
 		this.mDbHelper = new WaiterHelperDbHelper(context);
-		this.db = mDbHelper.getReadableDatabase();
 	}
 
 	/**
@@ -35,10 +34,12 @@ public class DatabaseManager {
 		Scanner scanner;
 		try {
 			scanner = new Scanner(file);
-			WaiterHelperDbHelper myDbHelper = new WaiterHelperDbHelper(context);
-			SQLiteDatabase db = myDbHelper.getWritableDatabase();
+			db = mDbHelper.getWritableDatabase();
+			
+//			mDbHelper.delete(db);
+			
 			ContentValues values = new ContentValues();
-
+			
 			while(scanner.hasNext())
 			{
 				String line = scanner.nextLine();
@@ -57,7 +58,7 @@ public class DatabaseManager {
 	 * @return an ArrayList<Patron> containing the patron objects of the current database
 	 */
 	public ArrayList<Patron> getPatronsArray() {
-
+		db = mDbHelper.getReadableDatabase();
 		patronList = new ArrayList<Patron>();
 
 		//define a projection that specifies which columns from the database to use
