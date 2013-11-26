@@ -87,7 +87,7 @@ implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 	 */
 	public void exit(View view)
 	{
-		if(SAVED = true) //exit if everything is saved
+		if(SAVED == true) //exit if everything is saved
 		{
 			finish();
 			System.exit(0);
