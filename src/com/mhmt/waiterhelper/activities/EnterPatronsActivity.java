@@ -18,6 +18,8 @@ import com.mhmt.waiterhelper.database.WaiterHelperDbHelper;
 import com.mhmt.waiterhelper.database.WaiterHelperContract.OrderEntry;
 
 /*
+ * The activity launched when "Enter Orders" is clicked on the home page.
+ * 
  * @author Mehmet Kologlu
  * @version November 18, 2013
  */
@@ -33,6 +35,7 @@ public class EnterPatronsActivity extends Activity {
 	private String seatNoString;
 	private String orderString;
 	
+	//layout variable
 	private EditText seatNoEditText;
 	
 	@Override
@@ -46,6 +49,7 @@ public class EnterPatronsActivity extends Activity {
 		//make db a writable database from the helper
 		db = mDbHelper.getWritableDatabase();
 		
+		//initialize layout variable for seats no
 		seatNoEditText = (EditText) findViewById(R.id.edit_seat_number);
 	}
 	
@@ -60,7 +64,10 @@ public class EnterPatronsActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
+			//Navigate to the home page
 			NavUtils.navigateUpFromSameTask(this);
+			//close database
+			db.close();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -68,27 +75,31 @@ public class EnterPatronsActivity extends Activity {
 	
 	/*
 	 * Add method is called when the add button is clicked.
+	 * Adds the user entered info to the database
 	 */
 	public void add(View view)
 	{
-		
 		tableNoString = ((EditText) findViewById(R.id.edit_table)).getText().toString();
 		seatNoString = seatNoEditText.getText().toString();
 		orderString = ((Spinner) findViewById(R.id.spinner_meal)).getSelectedItem().toString();
 		
-		if(tableNoString.isEmpty())
+		/*
+		 *  if statements to check that every required field is filled,
+		 *  followed by error display thru toasts 
+		 */
+		if(tableNoString.isEmpty()) //table no entered
 		{
 			Toast.makeText(getApplicationContext(), "Please enter a table ID", Toast.LENGTH_SHORT).show();
 		}
-		else if(seatNoString.isEmpty())
+		else if(seatNoString.isEmpty()) //seat no entered
 		{
 			Toast.makeText(getApplicationContext(), "Please enter a seat no", Toast.LENGTH_SHORT).show();
 		}
-		else if(orderString.equals("Select an order"))
+		else if(orderString.equals("Select an order")) //meal selected
 		{
 			Toast.makeText(getApplicationContext(), "Please select an order", Toast.LENGTH_SHORT).show();
 		}
-		else
+		else //every field has a value entered
 		{
 			//variable to store values
 			ContentValues values = new ContentValues();

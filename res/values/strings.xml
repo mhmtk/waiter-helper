@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Waiter Helper</string>
+    <string name="app_name">Waiting Helper</string>
     <string name="action_settings">Settings</string>
     <string name="exit">Exit</string>
     <string name="view">View</string>
     <string name="store">Store</string>
     <string name="load">Load</string>
-    <string name="enterPatrons">Enter Patrons</string>
-    <string name="title_activity_enter_patrons">Enter Patrons Activity</string>
+    <string name="enterPatrons">Enter Orders</string>
+    <string name="title_activity_enter_patrons">Enter Order</string>
     <string name="edit_seat_number_hint">Seat No</string>
     <string name="button_done">Done</string>
     <string name="text_meal">Select Meal</string>

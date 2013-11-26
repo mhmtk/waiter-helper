@@ -105,13 +105,16 @@ implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 	public void store(DialogFragment dialog, String filename) {
 		//create the file
 		File file = new File(this.getFilesDir()+"/"+filename);
+		String dBString = dbManager.printOutDb();
 		try{
 			PrintWriter printWriter = new PrintWriter(file);
-			String dBString = dbManager.printOutDb();
 			printWriter.write(dBString);
 			printWriter.close();
 			Toast.makeText(getApplicationContext(), "File stored", Toast.LENGTH_SHORT).show();
 		}
-		catch(Exception e){}
+		catch(Exception e){
+			Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+		}
+		dbManager.cleanDb();
 	}
 }

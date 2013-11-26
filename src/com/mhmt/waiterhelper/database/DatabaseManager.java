@@ -25,6 +25,13 @@ public class DatabaseManager {
 	}
 
 	/**
+	 * clean db
+	 */
+	public void cleanDb()
+	{
+		mDbHelper.delete(mDbHelper.getReadableDatabase());
+	}
+	/**
 	 * loads the database saved in the passed file 
 	 * @param filename Name of the file the database is saved
 	 * @param context
@@ -36,7 +43,7 @@ public class DatabaseManager {
 			scanner = new Scanner(file);
 			db = mDbHelper.getWritableDatabase();
 			
-//			mDbHelper.delete(db);
+			this.cleanDb();
 			
 			ContentValues values = new ContentValues();
 			
@@ -102,6 +109,7 @@ public class DatabaseManager {
 	 * table as a String
 	 */
 	public String printOutDb(){
+		db = mDbHelper.getReadableDatabase();
 		//define a projection that specifies which columns from the database to use
 		String[] projection = {
 				OrderEntry.COLUMN_NAME_TABLE_ID,
