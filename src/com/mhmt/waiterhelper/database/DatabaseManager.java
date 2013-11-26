@@ -13,6 +13,14 @@ import android.database.sqlite.SQLiteDatabase;
 import com.mhmt.waiterhelper.database.WaiterHelperContract.OrderEntry;
 import com.mhmt.waiterhelper.dataobjects.Patron;
 
+/**
+ * Database Manager class that is used by the front end classes 
+ * to get info from the database
+ * 
+ * @author Mehmet Kologlu
+ * @version November 26, 2013
+ *
+ */
 public class DatabaseManager {
 
 	private WaiterHelperDbHelper mDbHelper;
@@ -25,7 +33,7 @@ public class DatabaseManager {
 	}
 
 	/**
-	 * clean db
+	 * clear the data in the database
 	 */
 	public void cleanDb()
 	{
@@ -40,13 +48,13 @@ public class DatabaseManager {
 		File file = new File(context.getFilesDir(), filename);
 		Scanner scanner;
 		try {
+			//create a scanner on the passed file
 			scanner = new Scanner(file);
+			//get a writable database and clean it
 			db = mDbHelper.getWritableDatabase();
-			
 			this.cleanDb();
-			
+			//write the values from the file into the database
 			ContentValues values = new ContentValues();
-			
 			while(scanner.hasNext())
 			{
 				String line = scanner.nextLine();

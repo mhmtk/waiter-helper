@@ -115,6 +115,8 @@ public class EnterPatronsActivity extends Activity {
 			
 			//display toast to notify the user that the order is added
 			Toast.makeText(getApplicationContext(), "Order added.", Toast.LENGTH_SHORT).show();
+			//changes made, saving required
+			WaitMain.SAVED = false;
 		}
 	}
 	

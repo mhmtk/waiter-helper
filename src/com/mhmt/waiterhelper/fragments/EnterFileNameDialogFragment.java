@@ -16,7 +16,6 @@ public class EnterFileNameDialogFragment extends DialogFragment {
 	
 	public interface EnterFileNameDialogListener{
 		public void store(DialogFragment dialog, String filename);
-//		public void onDialogNegativeClick(DialogFragment dialog);
 	}
 	
 	EnterFileNameDialogListener mListener;
@@ -63,7 +62,6 @@ public class EnterFileNameDialogFragment extends DialogFragment {
 			public void onClick(DialogInterface dialog, int id) {
 				// user clicked Cancel
 				EnterFileNameDialogFragment.this.getDialog().cancel();
-//				mListener.onDialogNegativeClick(EnterFileNameDialogFragment.this);
 			}
 		});   
 		return builder.create();

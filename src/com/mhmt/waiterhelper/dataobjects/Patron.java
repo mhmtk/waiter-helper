@@ -1,5 +1,11 @@
 package com.mhmt.waiterhelper.dataobjects;
 
+/**
+ * Patron class to hold the data for one patron
+ * @author Mehmet Kologlu
+ * @version November 18, 2013
+ *
+ */
 public class Patron {
 
 	private String tID;

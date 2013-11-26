@@ -41,6 +41,7 @@ public class PickDatabaseToLoadDialogFragment extends DialogFragment {
             public void onClick(DialogInterface dialog, int id) {
             	Toast.makeText(activity,"Database loaded", Toast.LENGTH_SHORT).show();
             	DatabaseManager dbManager = new DatabaseManager(activity);
+            	//load the file into the database using the manager
             	dbManager.loadDatabase(files.get(id).getName(), activity);
             }
         });

@@ -17,7 +17,8 @@ import android.view.View;
 import android.widget.Toast;
 
 /**
- * 
+ *
+ * Home page activity
  * @author Mehmet Kologlu
  * @version November 22 2013
  *
@@ -26,8 +27,10 @@ import android.widget.Toast;
 public class WaitMain extends FragmentActivity 
 implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 
-	//instance variables
+	//instance variable
 	private DatabaseManager dbManager;
+	//boolean to keep track of whether anything is modified after last store
+	public static boolean SAVED = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +52,19 @@ implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 	 */
 	public void enterPatrons(View view)
 	{
-		//Create an intent and start the activity
+		//Create an intent and start the activity to enter orders
 		Intent enterIntent = new Intent(this, EnterPatronsActivity.class);
 		startActivity(enterIntent);
 	}
 
 	/**
 	 * launch an activity where the loaded database will be in display
+	 * 
 	 * @param view
 	 */
 	public void view(View view)
 	{
+		//start the view activity
 		Intent viewIntent = new Intent(this, ViewActivity.class);
 		startActivity(viewIntent);
 	}
@@ -75,10 +80,20 @@ implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 		newFragment.show(getSupportFragmentManager(), "pickADatabase");
 	}
 
+	/**
+	 * finish up and exit the app
+	 * 
+	 * @param view
+	 */
 	public void exit(View view)
 	{
-		finish();
-		System.exit(0);
+		if(SAVED = true) //exit if everything is saved
+		{
+			finish();
+			System.exit(0);
+		}
+		else
+			Toast.makeText(getApplicationContext(), "Please store the current data first", Toast.LENGTH_SHORT).show();	
 	}
 
 	/**
@@ -105,16 +120,20 @@ implements EnterFileNameDialogFragment.EnterFileNameDialogListener{
 	public void store(DialogFragment dialog, String filename) {
 		//create the file
 		File file = new File(this.getFilesDir()+"/"+filename);
+		//get the database data as a string
 		String dBString = dbManager.printOutDb();
-		try{
+		try{ //create a file and write the database data into it.
 			PrintWriter printWriter = new PrintWriter(file);
 			printWriter.write(dBString);
 			printWriter.close();
 			Toast.makeText(getApplicationContext(), "File stored", Toast.LENGTH_SHORT).show();
+			//clear the database data
+			dbManager.cleanDb();
+			//everything is saved
+			SAVED = true;
 		}
-		catch(Exception e){
+		catch(Exception e){ //error toast
 			Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
 		}
-		dbManager.cleanDb();
 	}
 }
